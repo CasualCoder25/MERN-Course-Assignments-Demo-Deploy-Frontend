@@ -4,7 +4,9 @@ import { Link } from "react-router-dom"
 function StudentListRow(props) {
   const { _id, name, email, rollno } = props.obj
   const handleClick = () => {
-    Axios.delete("https://crud-demo-deploy.onrender.com/students/delete-student/" + _id)
+    Axios.delete(
+      "https://crud-demo-deploy.onrender.com/students/delete-student/" + _id
+    )
       .then((res) => {
         if (res.status === 200) {
           alert("Record deleted successfully")
@@ -24,14 +26,12 @@ function StudentListRow(props) {
       <td>{email}</td>
       <td>{rollno}</td>
       <td>
-        <button className="btn btn-success ms-3">
-          <Link
-            to={"/edit-student/" + _id}
-            style={{ color: "white", textDecoration: "none" }}
-          >
-            Edit
-          </Link>
-        </button>
+        <Link
+          to={"/edit-student/" + _id}
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          <button className="btn btn-success ms-3">Edit</button>
+        </Link>
         <button onClick={handleClick} className="btn btn-danger mx-3">
           Delete
         </button>

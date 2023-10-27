@@ -23,6 +23,7 @@ function EditStudent() {
       .then((res) => {
         if (res.status === 200) {
           alert("Record updated")
+          window.location.assign("/#/student-list")
         } else {
           Promise.reject()
         }

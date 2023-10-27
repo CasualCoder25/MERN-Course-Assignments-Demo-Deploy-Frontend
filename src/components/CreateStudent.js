@@ -5,14 +5,16 @@ import Axios from "axios"
 function CreateStudent() {
   const [arr, setArr] = useState([])
   const getState = (studentInfo) => {
-    console.log(studentInfo)
     setArr(studentInfo)
   }
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault()
     const data = { name: arr[0], email: arr[1], rollno: arr[2] }
-    Axios.post("https://crud-demo-deploy.onrender.com/students/create-student", data)
+    Axios.post(
+      "https://crud-demo-deploy.onrender.com/students/create-student",
+      data
+    )
       .then((res) => {
-        console.log(data)
         if (res.status === 200) {
           alert("Record added successfully")
         } else {
@@ -20,6 +22,7 @@ function CreateStudent() {
         }
       })
       .catch((err) => alert(err))
+    event.target.reset()
   }
   return (
     <form onSubmit={handleSubmit}>
