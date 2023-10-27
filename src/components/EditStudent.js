@@ -14,7 +14,8 @@ function EditStudent() {
   const getState = (childData) => {
     setNewData(childData)
   }
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault()
     const data = { name: newData[0], email: newData[1], rollno: newData[2] }
     Axios.put(
       "https://crud-demo-deploy.onrender.com/students/update-student/" + id,
